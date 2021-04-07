@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DRApi.Model;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+
 namespace DRApi.Manager.Tests
 {
     [TestClass()]
@@ -11,6 +14,9 @@ namespace DRApi.Manager.Tests
     {
         RecordManager recordmanager;
         Record record;
+        private static readonly string DriverDirectory = "C:/Users/herso/OneDrive/Skrivebord/3. semester/Programming/Webdrivers/chromedriver_win32";
+        private static IWebDriver _driver;
+
         [TestInitialize]
         public void Start()
         {
@@ -27,6 +33,11 @@ namespace DRApi.Manager.Tests
             var list = RecordManager.RecordList.Count;
             Assert.AreEqual(list, RecordManager.RecordList.Count);
             Assert.AreNotEqual(recordmanager.GetAll(), recordmanager.GetAll());
+
+            _driver = new ChromeDriver(DriverDirectory);
+
+            _driver.Navigate().GoToUrl("file:///C:User/herso/OneDrive/Skrivebord/3.semester/Programming/DRapiHtml");
+            Assert.AreNotEqual("Calculator", _driver.Title);
         }
 
         [TestMethod()]
