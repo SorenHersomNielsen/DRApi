@@ -25,9 +25,19 @@ namespace DRApi.Controllers
 
         // GET api/<RecordController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Record GetById(int id)
         {
-            return "value";
+            return manager.GetById(id);
+        }
+
+        public Record GetByTitle(string title)
+        {
+            return manager.GetByTitle(title);
+        }
+
+        public Record GetByArtist(string artist)
+        {
+            return manager.GetByArtist(artist);
         }
 
         // POST api/<RecordController>

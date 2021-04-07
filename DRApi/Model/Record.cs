@@ -7,6 +7,15 @@ namespace DRApi.Model
 {
     public class Record
     {
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+
         private string title;
 
         public string Title
