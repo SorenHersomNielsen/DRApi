@@ -6,5 +6,6 @@ namespace DRApiTests1.Manager
 {
     class RecordManagerTests
     {
+        public int MyProperty { get; set; }
     }
 }
