@@ -43,13 +43,21 @@ namespace DRApi.Manager.Tests
         [TestMethod()]
         public void GetByIdTest()
         {
-            Assert.Fail();
+            record.Id = 4;
+            Assert.AreEqual(4, record.Id);
+
+            var getbyid = recordmanager.GetById(3);
+            Assert.AreEqual(getbyid, recordmanager.GetById(3));
         }
 
         [TestMethod()]
         public void GetByTitleTest()
         {
-            Assert.Fail();
+            record.Title = "evig glad";
+            Assert.AreEqual("evig glad", record.Title);
+
+            var getbytitle = recordmanager.GetByTitle("rasmus");
+            Assert.AreEqual(getbytitle, recordmanager.GetByTitle("rasmus"));
         }
 
         [TestMethod()]

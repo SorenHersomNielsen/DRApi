@@ -30,11 +30,13 @@ namespace DRApi.Controllers
             return manager.GetById(id);
         }
 
+        [HttpGet("title/{title}")]
         public Record GetByTitle(string title)
         {
             return manager.GetByTitle(title);
         }
 
+        [HttpGet("artist/{artist}")]
         public Record GetByArtist(string artist)
         {
             return manager.GetByArtist(artist);

@@ -13,7 +13,8 @@ namespace DRApi.Manager
         public static List<Record> RecordList = new List<Record>()
         {
             new Record{Id = nextId++, Title = "Øde Ø", Artist ="Rasmus Seebach", Duration = 180, YearOfPublication = 2013},
-            new Record{Id = nextId++, Title = "Pas På Den Knaldrøde Gummibåd", Artist = "Birthe Kjær",Duration = 180, YearOfPublication = 1971}
+            new Record{Id = nextId++, Title = "Pas På Den Knaldrøde Gummibåd", Artist = "Birthe Kjær",Duration = 180, YearOfPublication = 1971},
+            new Record{Id = nextId++, Title= "rasmus", Artist = "maj", Duration = 300, YearOfPublication = 2020}
         };
 
         public List<Record> GetAll()
