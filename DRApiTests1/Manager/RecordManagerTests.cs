@@ -15,6 +15,7 @@ namespace DRApi.Manager.Tests
         RecordManager recordmanager;
         Record record;
         private static readonly string DriverDirectory = "C:/Users/herso/OneDrive/Skrivebord/3. semester/Programming/Webdrivers/chromedriver_win32";
+        private static readonly string DriverDirectory2 = "C:/webDrivers";
         private static IWebDriver _driver;
 
         [TestInitialize]
@@ -34,9 +35,9 @@ namespace DRApi.Manager.Tests
             Assert.AreEqual(list, RecordManager.RecordList.Count);
             Assert.AreNotEqual(recordmanager.GetAll(), recordmanager.GetAll());
 
-            _driver = new ChromeDriver(DriverDirectory);
+            _driver = new ChromeDriver(DriverDirectory2);
 
-            _driver.Navigate().GoToUrl("file:///C:User/herso/OneDrive/Skrivebord/3.semester/Programming/DRapiHtml");
+            _driver.Navigate().GoToUrl("https://math6799-drhtml.azurewebsites.net/");
             Assert.AreNotEqual("Calculator", _driver.Title);
         }
 
@@ -63,7 +64,11 @@ namespace DRApi.Manager.Tests
         [TestMethod()]
         public void GetByArtistTest()
         {
-            Assert.Fail();
+            record.Artist = "hallo";
+            Assert.AreEqual("hallo", record.Artist);
+
+            Record getbyartist = recordmanager.GetByArtist("maj");
+            Assert.AreEqual(getbyartist, recordmanager.GetByArtist("maj"));
         }
     }
 }
