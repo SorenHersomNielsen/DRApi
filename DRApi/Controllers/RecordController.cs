@@ -42,16 +42,35 @@ namespace DRApi.Controllers
             return manager.GetByArtist(artist);
         }
 
+        [HttpGet("Tracks")]
+        public IEnumerable<Tracks> GetAllTracks()
+        {
+            return manager.GetAllTracks();
+        }
+
         // POST api/<RecordController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
+        [HttpPost("{RecordId}/Tracks")]
+        public Tracks PostTracks(int RecordId, [FromBody] Tracks value)
+        {
+            return manager.AddTracks(RecordId, value);
+        }
+
         // PUT api/<RecordController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+        }
+
+        // PUT api/<RecordController>/5
+        [HttpPut("{TracksId}/Tracks")]
+        public Tracks PutTracks(int TracksId, [FromBody] Tracks value)
+        {
+            return manager.UpdateTracks(TracksId, value);
         }
 
         // DELETE api/<RecordController>/5

@@ -16,6 +16,11 @@ namespace DRApi.Manager
             new Record{Id = nextId++, Title = "Pas På Den Knaldrøde Gummibåd", Artist = "Birthe Kjær",Duration = 180, YearOfPublication = 1971},
             new Record{Id = nextId++, Title= "rasmus", Artist = "maj", Duration = 300, YearOfPublication = 2020}
         };
+        
+        public static List<Tracks> TracksList = new List<Tracks>()
+        {
+            new Tracks{Id = nextId++, Name = "Watch What Happens next", Genre = "Rock", RecordId = 1 }
+        };
 
         public List<Record> GetAll()
         {
@@ -36,5 +41,38 @@ namespace DRApi.Manager
         {
             return RecordList.Find(record => record.Artist == artist);
         }
+
+        public List<Tracks> GetAllTracks()
+        {
+            return new List<Tracks>(TracksList);
+        }
+
+        public Tracks AddTracks(int RecordId, Tracks tracks)
+        {
+            Record record = RecordList.Find(t => t.Id == RecordId);
+            if (record == null)
+            {
+                return null;
+            }
+            tracks.RecordId = RecordId;
+            tracks.Id = nextId++;
+            TracksList.Add(tracks);
+            return tracks;
+        }
+
+        public Tracks UpdateTracks(int TracksId, Tracks updates)
+        {
+            Tracks tracks = TracksList.Find(TracksList => TracksList.Id == TracksId);
+            if (tracks == null)
+            {
+                return null;
+            }
+
+            tracks.Name = updates.Name;
+            tracks.Genre = updates.Genre;
+            tracks.RecordId = updates.RecordId;
+            return tracks;
+        }
+
     }
 }
