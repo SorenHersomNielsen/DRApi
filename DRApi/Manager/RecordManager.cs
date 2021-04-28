@@ -19,7 +19,9 @@ namespace DRApi.Manager
         
         public static List<Tracks> TracksList = new List<Tracks>()
         {
-            new Tracks{Id = nextId++, Name = "Watch What Happens next", Genre = "Rock", RecordId = 1 }
+            new Tracks{Id = 1, Name = "Watch What Happens next", Genre = "Rock", RecordId = 1 },
+            new Tracks{Id = 2, Name = "Meteor", Genre = "Rock", RecordId = 1 },
+            new Tracks{Id = 3, Name = "SStacy's mom", Genre = "Rock", RecordId = 2}
         };
 
         public List<Record> GetAll()
@@ -42,9 +44,9 @@ namespace DRApi.Manager
             return RecordList.Find(record => record.Artist == artist);
         }
 
-        public List<Tracks> GetAllTracks()
+        public List<Tracks> GetAllTracksByRecoridId(int id)
         {
-            return new List<Tracks>(TracksList);
+            return new List<Tracks>(TracksList.FindAll(TracksList => TracksList.RecordId == id));
         }
 
         public Tracks AddTracks(int RecordId, Tracks tracks)

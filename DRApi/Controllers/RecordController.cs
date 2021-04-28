@@ -42,10 +42,10 @@ namespace DRApi.Controllers
             return manager.GetByArtist(artist);
         }
 
-        [HttpGet("Tracks")]
-        public IEnumerable<Tracks> GetAllTracks()
+        [HttpGet("{RecordId}/Tracks")]
+        public IEnumerable<Tracks> GetAllTracks(int RecordId)
         {
-            return manager.GetAllTracks();
+            return manager.GetAllTracksByRecoridId(RecordId);
         }
 
         // POST api/<RecordController>
