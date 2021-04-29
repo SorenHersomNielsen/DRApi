@@ -49,6 +49,13 @@ namespace DRApi.Manager
             return new List<Tracks>(TracksList.FindAll(TracksList => TracksList.RecordId == id));
         }
 
+        public Record AddRecord(Record record)
+        {
+            record.Id = nextId++;
+            RecordList.Add(record);
+            return record;
+        }
+
         public Tracks AddTracks(int RecordId, Tracks tracks)
         {
             Record record = RecordList.Find(t => t.Id == RecordId);

@@ -50,8 +50,9 @@ namespace DRApi.Controllers
 
         // POST api/<RecordController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Record Post([FromBody] Record value)
         {
+            return manager.AddRecord(value);
         }
 
         [HttpPost("{RecordId}/Tracks")]
