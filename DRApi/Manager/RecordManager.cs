@@ -56,6 +56,28 @@ namespace DRApi.Manager
             return record;
         }
 
+        public Record UpdateRecord(int id, Record value)
+        {
+            Record record1 = RecordList.Find(record => record.Id == id);
+            if (record1 == null)
+            {
+                return null;
+            }
+            record1.Title = value.Title;
+            record1.Artist = value.Artist;
+            record1.Duration = value.Duration;
+            record1.YearOfPublication = value.YearOfPublication;
+            return record1;
+        }
+
+        public Record DeleteRecord(int id)
+        {
+            Record record = RecordList.Find(record1 => record1.Id == id);
+            if (record == null) return null;
+            RecordList.Remove(record);
+            return record;
+        }
+
         public Tracks AddTracks(int RecordId, Tracks tracks)
         {
             Record record = RecordList.Find(t => t.Id == RecordId);
@@ -80,6 +102,14 @@ namespace DRApi.Manager
             tracks.Name = updates.Name;
             tracks.Genre = updates.Genre;
             tracks.RecordId = updates.RecordId;
+            return tracks;
+        }
+
+        public Tracks DeleteTracks(int TracksId)
+        {
+            Tracks tracks = TracksList.Find(tracks1 => tracks1.Id == TracksId);
+            if (tracks == null) return null;
+            TracksList.Remove(tracks);
             return tracks;
         }
 

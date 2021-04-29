@@ -63,8 +63,9 @@ namespace DRApi.Controllers
 
         // PUT api/<RecordController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public Record Put(int id, [FromBody] Record value)
         {
+            return manager.UpdateRecord(id, value);
         }
 
         // PUT api/<RecordController>/5
@@ -76,8 +77,15 @@ namespace DRApi.Controllers
 
         // DELETE api/<RecordController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public Record Delete(int id)
         {
+            return manager.DeleteRecord(id);
+        }
+
+        [HttpDelete("Tracks/{TracksId}")]
+        public Tracks DeleteTracks(int TracksId)
+        {
+            return manager.DeleteTracks(TracksId);
         }
     }
 }
